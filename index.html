@@ -23,9 +23,6 @@
                     fontFamily: {
                         serif: ['"EB Garamond"', '"Noto Serif TC"', 'serif'],
                         sans: ['"Inter"', '"Noto Sans TC"', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
                     }
                 }
             }
@@ -48,16 +45,36 @@
             border: 1px solid #C5A059;
             font-family: 'EB Garamond', serif;
         }
+        /* 按鈕樣式：手機版寬大，電腦版固定 */
         .rating-label {
-            border: 1px solid rgba(15, 47, 36, 0.2);
-            transition: all 0.2s ease;
+            border: 1px solid rgba(15, 47, 36, 0.15);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        /* 電腦版按鈕大小設定 */
+        @media (min-width: 768px) {
+            .rating-label {
+                width: 3.5rem !important;
+                height: 3rem !important;
+            }
+        }
+        /* 手機版按鈕高度設定 */
+        @media (max-width: 767px) {
+            .rating-label {
+                height: 3.5rem !important;
+            }
         }
         input:checked + .rating-label {
-            background-color: #0F2F24;
-            color: #C5A059;
-            border-color: #0F2F24;
+            background-color: #0F2F24 !important;
+            color: #C5A059 !important;
+            border-color: #C5A059 !important;
             transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10;
         }
         .ornament-line {
             height: 1px;
@@ -69,8 +86,8 @@
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(15, 47, 36, 0.9);
-            z-index: 50;
+            background: rgba(15, 47, 36, 0.95);
+            z-index: 100;
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -78,132 +95,126 @@
         }
     </style>
 </head>
-<body class="min-h-screen pt-32 text-british-text relative text-center">
+<body class="min-h-screen pt-8 md:pt-32 text-british-text relative text-center">
 
     <div id="loadingOverlay">
         <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-british-gold mb-4"></div>
         <p class="font-serif italic text-lg">提交中，請稍候...</p>
     </div>
 
-    <div class="absolute top-6 left-6 md:top-10 md:left-10 z-10">
-        <img src="https://drive.google.com/thumbnail?id=1xrhrHTWGHnMbwGZFFAQPFEWaKeDDdBlQ&sz=w400" alt="Logo" class="h-12 md:h-20 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300">
+    <div class="mb-8 md:absolute md:top-6 md:left-6 lg:top-10 lg:left-10 z-10 flex justify-center md:block text-center">
+        <img src="https://drive.google.com/thumbnail?id=1xrhrHTWGHnMbwGZFFAQPFEWaKeDDdBlQ&sz=w400" alt="Logo" class="h-14 md:h-20 w-auto opacity-90 md:opacity-80">
     </div>
 
-    <div class="max-w-3xl mx-auto px-4">
-        <!-- 標題區域 -->
-        <div class="text-center mb-20">
-            <h1 class="text-3xl md:text-5xl font-black text-british-gold mb-6 tracking-tight">
-                Eva職場法律：吵架的藝術<br><span class="text-2xl md:text-4xl italic font-normal">課後滿意度問卷</span>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10 md:mb-20">
+            <h1 class="text-2xl sm:text-3xl md:text-5xl font-black text-british-gold mb-4 tracking-tight leading-tight">
+                Eva職場法律：<br class="block sm:hidden">吵架的藝術<br>
+                <span class="text-lg sm:text-2xl md:text-4xl italic font-normal">課後滿意度問卷</span>
             </h1>
-            <div class="ornament-line w-48 mx-auto mb-6"></div>
-            <p class="text-british-cream/70 text-lg italic font-serif">您的每一份回饋，都是我們持續優化課程的動力。</p>
+            <div class="ornament-line w-32 md:w-48 mx-auto mb-6"></div>
+            <p class="text-british-cream/70 text-base md:text-lg italic font-serif px-4">您的每一份回饋，都是我們持續優化課程的動力。</p>
         </div>
 
-        <form id="surveyForm" class="space-y-16 mb-24">
-            <!-- I. 基本資料 -->
-            <section class="paper-card p-8 md:p-12 rounded-sm relative border-t-8 border-british-gold text-left">
-                <div class="absolute -top-5 left-10 section-number w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg">I</div>
-                <div class="mb-8 border-b border-british-gold/20 pb-4">
-                    <h3 class="text-3xl font-bold text-british-green mb-1">基本資料</h3>
+        <form id="surveyForm" class="space-y-10 md:space-y-16 mb-24">
+            <section class="paper-card p-6 md:p-12 rounded-sm relative border-t-8 border-british-gold text-left">
+                <div class="absolute -top-5 left-6 md:left-10 section-number w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg">I</div>
+                <div class="mb-6 border-b border-british-gold/20 pb-4">
+                    <h3 class="text-2xl md:text-3xl font-bold text-british-green mb-1">基本資料</h3>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div class="space-y-2 text-left">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+                    <div class="space-y-2">
                         <label class="block text-lg font-bold text-british-green uppercase tracking-widest opacity-90">姓名 / 暱稱</label>
-                        <input type="text" name="entry_name" required class="w-full bg-white/40 border-b-2 border-british-green/10 py-2 px-3 text-xl focus:border-british-gold outline-none transition-all placeholder:text-british-text/30" placeholder="您的稱呼">
+                        <input type="text" name="entry_name" required class="w-full bg-white/50 border-b-2 border-british-green/10 py-2 px-3 text-xl focus:border-british-gold outline-none transition-all" placeholder="您的稱呼">
                     </div>
-                    <div class="space-y-2 text-left">
+                    <div class="space-y-2">
                         <label class="block text-lg font-bold text-british-green uppercase tracking-widest opacity-90">職位</label>
-                        <input type="text" name="entry_job" required class="w-full bg-white/40 border-b-2 border-british-green/10 py-2 px-3 text-xl focus:border-british-gold outline-none transition-all placeholder:text-british-text/30" placeholder="例如：專案經理">
+                        <input type="text" name="entry_job" required class="w-full bg-white/50 border-b-2 border-british-green/10 py-2 px-3 text-xl focus:border-british-gold outline-none transition-all" placeholder="例如：專案經理">
                     </div>
-                    <div class="md:col-span-2 space-y-5 pt-4 text-left">
-                        <label class="block text-lg font-bold text-british-green uppercase tracking-widest mb-2 border-l-4 border-british-gold pl-3">為什麼當初會選擇報名這堂課？ (可多選)</label>
-                        <div class="grid grid-cols-1 gap-4">
+                    <div class="md:col-span-2 space-y-4 pt-4">
+                        <label class="block text-lg font-bold text-british-green uppercase tracking-widest mb-2 border-l-4 border-british-gold pl-3">為什麼當初報名這堂課？ (可多選)</label>
+                        <div class="grid grid-cols-1 gap-3">
                             <label class="flex items-start space-x-3 cursor-pointer group">
-                                <input type="checkbox" name="motivation" value="廣告標題吸引我 (如：吵架的藝術)" class="w-5 h-5 mt-0.5 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
-                                <span class="text-base text-british-green/80 group-hover:text-british-green transition font-medium">廣告標題吸引我 (如：吵架的藝術)</span>
+                                <input type="checkbox" name="motivation" value="廣告標題吸引我 (如：吵架的藝術)" class="w-5 h-5 mt-1 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
+                                <span class="text-base md:text-lg text-british-green/80 group-hover:text-british-green transition font-medium">廣告標題吸引我 (如：吵架的藝術)</span>
                             </label>
                             <label class="flex items-start space-x-3 cursor-pointer group">
-                                <input type="checkbox" name="motivation" value="認同 Eva 老師的專業背景/粉專內容" class="w-5 h-5 mt-0.5 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
-                                <span class="text-base text-british-green/80 group-hover:text-british-green transition font-medium">認同 Eva 老師的專業背景 / 粉專內容</span>
+                                <input type="checkbox" name="motivation" value="認同 Eva 老師的專業背景/粉專內容" class="w-5 h-5 mt-1 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
+                                <span class="text-base md:text-lg text-british-green/80 group-hover:text-british-green transition font-medium">認同 Eva 老師的專業背景 / 粉專內容</span>
                             </label>
                             <label class="flex items-start space-x-3 cursor-pointer group">
-                                <input type="checkbox" name="motivation" value="目前正陷入職場衝突，急需法律自保" class="w-5 h-5 mt-0.5 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
-                                <span class="text-base text-british-green/80 group-hover:text-british-green transition font-medium">目前正陷入職場衝突，急需法律自保</span>
+                                <input type="checkbox" name="motivation" value="目前正陷入職場衝突，急需法律自保" class="w-5 h-5 mt-1 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
+                                <span class="text-base md:text-lg text-british-green/80 group-hover:text-british-green transition font-medium">目前正陷入職場衝突，急需法律自保</span>
                             </label>
                             <label class="flex items-start space-x-3 cursor-pointer group">
-                                <input type="checkbox" name="motivation" value="為了職涯規劃，想提升法律風險控管能力" class="w-5 h-5 mt-0.5 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
-                                <span class="text-base text-british-green/80 group-hover:text-british-green transition font-medium">為了職涯規劃，想提升法律風險控管能力</span>
+                                <input type="checkbox" name="motivation" value="為了職涯規劃，想提升法律風險控管能力" class="w-5 h-5 mt-1 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
+                                <span class="text-base md:text-lg text-british-green/80 group-hover:text-british-green transition font-medium">想提升法律風險控管能力</span>
                             </label>
                             <label class="flex items-start space-x-3 cursor-pointer group">
-                                <input type="checkbox" name="motivation" value="朋友推薦 / 口碑介紹" class="w-5 h-5 mt-0.5 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
-                                <span class="text-base text-british-green/80 group-hover:text-british-green transition font-medium">朋友推薦 / 口碑介紹</span>
+                                <input type="checkbox" name="motivation" value="朋友推薦 / 口碑介紹" class="w-5 h-5 mt-1 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
+                                <span class="text-base md:text-lg text-british-green/80 group-hover:text-british-green transition font-medium">朋友推薦 / 口碑介紹</span>
                             </label>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- II. 課程核心評價 -->
-            <section class="paper-card p-8 md:p-12 rounded-sm relative text-left">
-                <div class="absolute -top-5 left-10 section-number w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg">II</div>
+            <section class="paper-card p-6 md:p-12 rounded-sm relative text-left">
+                <div class="absolute -top-5 left-6 md:left-10 section-number w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg">II</div>
                 <div class="mb-8 border-b border-british-gold/20 pb-4">
                     <h3 class="text-2xl font-bold text-british-green mb-1">課程核心評價</h3>
                 </div>
                 <div id="content-ratings" class="space-y-12"></div>
             </section>
 
-            <!-- III. 講師專業表現 -->
-            <section class="paper-card p-8 md:p-12 rounded-sm relative text-left">
-                <div class="absolute -top-5 left-10 section-number w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg">III</div>
+            <section class="paper-card p-6 md:p-12 rounded-sm relative text-left">
+                <div class="absolute -top-5 left-6 md:left-10 section-number w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg">III</div>
                 <div class="mb-8 border-b border-british-gold/20 pb-4">
                     <h3 class="text-2xl font-bold text-british-green mb-1">講師專業表現</h3>
                 </div>
                 <div id="lecturer-ratings" class="space-y-12"></div>
             </section>
 
-            <!-- IV. 教學環境與行政支援 -->
-            <section class="paper-card p-8 md:p-12 rounded-sm relative text-left">
-                <div class="absolute -top-5 left-10 section-number w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg">IV</div>
+            <section class="paper-card p-6 md:p-12 rounded-sm relative text-left">
+                <div class="absolute -top-5 left-6 md:left-10 section-number w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg">IV</div>
                 <div class="mb-8 border-b border-british-gold/20 pb-4">
-                    <h3 class="text-2xl font-bold font-serif text-british-green mb-1">教學環境與行政支援</h3>
+                    <h3 class="text-2xl font-bold font-serif text-british-green mb-1">行政與教學支援</h3>
                 </div>
                 <div id="logistics-ratings" class="space-y-12"></div>
             </section>
 
-            <!-- V. 實務收穫 -->
-            <section class="paper-card p-8 md:p-12 rounded-sm relative border-b-8 border-british-gold text-left">
-                <div class="absolute -top-5 left-10 section-number w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg">V</div>
-                <div class="mb-8 border-b border-british-gold/20 pb-4">
+            <section class="paper-card p-6 md:p-12 rounded-sm relative border-b-8 border-british-gold text-left">
+                <div class="absolute -top-5 left-6 md:left-10 section-number w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg">V</div>
+                <div class="mb-6 border-b border-british-gold/20 pb-4">
                     <h3 class="text-3xl font-bold text-british-green mb-1">實務收穫</h3>
                 </div>
                 
-                <div class="space-y-10">
+                <div class="space-y-8">
                     <div class="space-y-3">
-                        <!-- 修改問題文字 -->
-                        <label class="block text-lg font-bold text-british-green uppercase tracking-wider opacity-90">本次課程的學習收穫有哪些？</label>
-                        <textarea name="entry_gains" rows="5" class="w-full bg-white/40 border-2 border-british-green/5 p-4 text-lg rounded-none focus:border-british-gold outline-none italic font-serif leading-relaxed" placeholder="請填寫您的心得..."></textarea>
+                        <label class="block text-lg font-bold text-british-green opacity-90 leading-snug">本次課程的學習收穫有哪些？</label>
+                        <textarea name="entry_gains" rows="4" class="w-full bg-white/50 border-2 border-british-green/5 p-4 text-lg rounded-none focus:border-british-gold outline-none italic font-serif leading-relaxed" placeholder="請填寫您的心得..."></textarea>
                     </div>
 
                     <div class="space-y-3">
-                        <label class="block text-lg font-bold text-british-green uppercase tracking-wider opacity-90">本次課程是否有建議改善事項？或您對本課程的回饋：</label>
-                        <textarea name="entry_feedback" rows="3" class="w-full bg-white/40 border-2 border-british-green/5 p-4 text-lg rounded-none focus:border-british-gold outline-none" placeholder="讓我們知道如何做得更好"></textarea>
+                        <label class="block text-lg font-bold text-british-green opacity-90 leading-snug">本次課程是否有建議改善事項？或您對本課程的回饋：</label>
+                        <textarea name="entry_feedback" rows="3" class="w-full bg-white/50 border-2 border-british-green/5 p-4 text-lg rounded-none focus:border-british-gold outline-none" placeholder="讓我們知道如何做得更好"></textarea>
                     </div>
 
                     <div class="space-y-3">
-                        <label class="block text-lg font-bold text-british-green uppercase tracking-wider opacity-90">除了「吵架篇」，未來您感興趣的主題有哪些？</label>
-                        <textarea name="entry_future" rows="3" class="w-full bg-white/40 border-2 border-british-green/5 p-4 text-lg rounded-none focus:border-british-gold outline-none" placeholder="例如：資遣攻防、合約避坑指南..."></textarea>
+                        <label class="block text-lg font-bold text-british-green opacity-90 leading-snug">除了「吵架篇」，未來您感興趣的主題有哪些？</label>
+                        <textarea name="entry_future" rows="3" class="w-full bg-white/50 border-2 border-british-green/5 p-4 text-lg rounded-none focus:border-british-gold outline-none" placeholder="例如：資遣攻防、合約避坑指南..."></textarea>
                     </div>
 
-                    <div class="p-8 border-2 border-double border-british-gold/30 bg-british-green/5">
-                        <label class="block text-lg font-bold text-british-green uppercase tracking-wider mb-4 opacity-90">【口碑見證授權】</label>
+                    <div class="p-6 md:p-8 border-2 border-double border-british-gold/30 bg-british-green/5">
+                        <label class="block text-lg font-bold text-british-green mb-4 opacity-90">【口碑見證授權】</label>
                         <div class="space-y-4">
-                            <label class="flex items-center space-x-4 cursor-pointer group">
+                            <label class="flex items-center space-x-4 cursor-pointer group text-left">
                                 <input type="radio" name="authorization" value="同意！支持優質好課 (將授權去識別化後引用評價)" class="w-6 h-6 border-2 border-british-gold text-british-green focus:ring-0" required>
                                 <span class="text-lg text-british-green font-serif italic font-bold">同意！授權去識別化後引用評價</span>
                             </label>
-                            <label class="flex items-center space-x-4 cursor-pointer group">
-                                <input type="radio" name="authorization" value="僅限內部參考" class="w-5 h-5 border-2 border-british-gold text-british-green focus:ring-0">
+                            <label class="flex items-center space-x-4 cursor-pointer group text-left">
+                                <input type="radio" name="authorization" value="僅限內部參考" class="w-6 h-6 border-2 border-british-gold text-british-green focus:ring-0">
                                 <span class="text-lg text-british-green/60 font-serif italic">僅限內部參考</span>
                             </label>
                         </div>
@@ -211,81 +222,70 @@
                 </div>
             </section>
 
-            <div class="text-center pt-10">
-                <button type="submit" class="bg-british-gold text-british-green px-20 py-6 rounded-none font-black text-xl uppercase tracking-[0.3em] hover:bg-yellow-600 transition-all shadow-2xl hover:scale-105 active:scale-95 font-serif">
+            <div class="text-center pt-6">
+                <button type="submit" class="w-full md:w-auto bg-british-gold text-british-green px-12 md:px-20 py-5 md:py-6 rounded-none font-black text-lg md:text-xl uppercase tracking-[0.2em] shadow-2xl active:scale-95 transition-all">
                     提交問卷回饋
                 </button>
             </div>
         </form>
 
-        <footer class="bg-british-green text-white py-12 border-t-4 border-british-gold text-center">
+        <footer class="bg-british-green text-white py-12 border-t-4 border-british-gold text-center -mx-4">
             <div class="container mx-auto px-6 text-center flex flex-col items-center">
-                <div class="mb-2 flex flex-col items-center">
-                    <img src="https://drive.google.com/thumbnail?id=1xrhrHTWGHnMbwGZFFAQPFEWaKeDDdBlQ&sz=w400" alt="Logo" class="h-14 w-auto mb-0 object-contain text-center">
+                <div class="mb-2">
+                    <img src="https://drive.google.com/thumbnail?id=1xrhrHTWGHnMbwGZFFAQPFEWaKeDDdBlQ&sz=w400" alt="Logo" class="h-12 w-auto object-contain">
                 </div>
-                <p class="text-gray-400 text-sm mb-8 max-w-lg mx-auto leading-relaxed tracking-wide font-serif italic text-center">
+                <p class="text-gray-400 text-xs sm:text-sm mb-8 max-w-lg leading-relaxed tracking-wide font-serif italic px-2">
                     我思故我在！人不會思考，跟死魚有什麼兩樣？<br>
                     <span class="not-italic opacity-60 mt-2 block tracking-widest uppercase text-[10px]">Copyright © 2026 職場法律實戰班. All rights reserved.</span>
                 </p>
-                <div class="flex justify-center gap-6">
-                    <a href="https://www.facebook.com/profile.php?id=61572494396270" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full border border-british-gold text-british-gold hover:bg-british-gold hover:text-british-green transition duration-300 text-xl group shadow-lg"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/legal._.thinking/" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full border border-british-gold text-british-gold hover:bg-british-gold hover:text-british-green transition duration-300 text-xl group shadow-lg"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://lin.ee/0ekc9BGY" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full border border-british-gold text-british-gold hover:bg-british-gold hover:text-british-green transition duration-300 text-xl group shadow-lg"><i class="fa-brands fa-line"></i></a>
+                <div class="flex justify-center gap-6 text-center">
+                    <a href="https://www.facebook.com/profile.php?id=61572494396270" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full border border-british-gold text-british-gold text-xl group transition hover:bg-british-gold hover:text-british-green"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/legal._.thinking/" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full border border-british-gold text-british-gold text-xl group transition hover:bg-british-gold hover:text-british-green"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://lin.ee/0ekc9BGY" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full border border-british-gold text-british-gold text-xl group transition hover:bg-british-gold hover:text-british-green"><i class="fa-brands fa-line"></i></a>
                 </div>
             </div>
         </footer>
 
-        <!-- 提交成功訊息框 -->
-        <div id="successMessage" class="hidden max-w-2xl mx-auto py-16 px-8 md:px-12 paper-card rounded-none border-4 border-double border-british-gold m-4 mb-24 text-center">
-            <h2 class="text-4xl font-black mb-6 font-serif text-british-green italic">感謝您的填寫</h2>
-            <div class="w-24 h-px bg-british-gold mx-auto mb-10"></div>
-            
-            <div class="space-y-6 font-serif text-lg leading-relaxed text-british-green/90">
-                <p class="text-center">想邀請您加入<br>
-                <span class="font-bold text-british-green">👉【企業危機百科】官方 Line</span></p>
-                
+        <div id="successMessage" class="hidden max-w-2xl mx-auto py-12 px-6 md:py-16 md:px-12 paper-card rounded-none border-4 border-double border-british-gold m-2 mb-24 text-center">
+            <h2 class="text-3xl md:text-4xl font-black mb-6 font-serif text-british-green italic">感謝您的填寫</h2>
+            <div class="w-16 md:w-24 h-px bg-british-gold mx-auto mb-10"></div>
+            <div class="space-y-6 font-serif text-base md:text-lg leading-relaxed text-british-green/90">
+                <p class="text-center font-bold">想邀請您加入<br>👉【企業危機百科】官方 Line</p>
                 <div class="p-6 bg-british-green/5 border border-british-gold/30 rounded-sm">
-                    <p class="mb-4 text-center">LINE：<span class="font-bold">@hotpoint</span></p>
+                    <p class="mb-4 text-center text-british-green">LINE：<span class="font-bold">@hotpoint</span></p>
                     <div class="text-center">
-                        <a href="https://lin.ee/Sr4fSiG" target="_blank" class="inline-flex items-center space-x-2 bg-[#06C755] text-white px-6 py-3 rounded-full hover:brightness-110 transition shadow-md">
+                        <a href="https://lin.ee/Sr4fSiG" target="_blank" class="inline-flex items-center space-x-2 bg-[#06C755] text-white px-8 py-4 rounded-full hover:brightness-110 transition shadow-md">
                             <i class="fa-brands fa-line text-2xl"></i>
                             <span class="font-bold font-sans">立即加入官方 LINE</span>
                         </a>
                     </div>
                     <p class="mt-6 text-base italic text-center">加入後，請傳送關鍵字<span class="bg-british-gold/20 px-2 font-bold not-italic">「律色思維」</span></p>
-                    <p class="text-sm text-british-green/60 mt-2 text-center">（若你已加入過，也請再傳送一次關鍵字），小編就會知道你是從課程來的小夥伴 💛</p>
+                    <p class="text-xs md:text-sm text-british-green/60 mt-2 text-center px-4">（若你已加入過，也請再傳送一次關鍵字），小編就會知道你是從課程來的小夥伴 💛</p>
                 </div>
-
-                <div class="pt-4 text-left">
+                <div class="pt-4 text-left px-2 max-w-xs mx-auto md:max-w-none">
                     <p class="font-bold mb-4 border-b border-british-gold/20 pb-2">之後你會收到：</p>
-                    <ul class="space-y-2 list-none">
+                    <ul class="space-y-2 list-none text-sm md:text-base">
                         <li class="flex items-start"><span class="text-british-gold mr-2">✔</span> Eva 老師最新開課消息</li>
                         <li class="flex items-start"><span class="text-british-gold mr-2">✔</span> 學員專屬優惠</li>
-                        <li class="flex items-start"><span class="text-british-gold mr-2">✔</span> 精選好課推薦（不推銷，只推真的實用）</li>
+                        <li class="flex items-start"><span class="text-british-gold mr-2">✔</span> 精選好課推薦（不推銷）</li>
                         <li class="flex items-start"><span class="text-british-gold mr-2">✔</span> 勞動更新資訊</li>
                     </ul>
                 </div>
-
-                <p class="pt-8 text-center font-bold text-british-gold text-2xl tracking-wide italic">
-                    歡迎加入，Line 上見 👋
-                </p>
+                <p class="pt-8 text-center font-bold text-british-gold text-xl md:text-2xl tracking-wide italic">歡迎加入，Line 上見 👋</p>
             </div>
-
             <div class="mt-12 text-center">
-                <button onclick="location.reload()" class="text-british-green/40 hover:text-british-gold transition underline text-sm uppercase tracking-widest">
-                    返回問卷首頁
-                </button>
+                <button onclick="location.reload()" class="text-british-green/40 hover:text-british-gold transition underline text-xs uppercase tracking-widest">返回問卷首頁</button>
             </div>
         </div>
     </div>
 
     <template id="rating-template">
         <div class="rating-item group text-left">
-            <p class="text-british-green font-bold text-lg mb-6 font-serif group-hover:text-british-gold transition-colors leading-relaxed"></p>
-            <div class="flex items-center space-x-4">
-                <span class="text-[11px] text-british-green/50 font-bold tracking-tighter">不滿意</span>
-                <div class="flex space-x-2 md:space-x-3" id="radio-container"></div>
-                <span class="text-[11px] text-british-green/50 font-bold tracking-tighter">滿意</span>
+            <p class="text-british-green font-bold text-base md:text-lg mb-6 font-serif group-hover:text-british-gold transition-colors leading-relaxed"></p>
+            <div class="flex items-center space-x-2 md:space-x-4">
+                <span class="text-[10px] md:text-[11px] text-british-green/40 font-bold uppercase w-8 text-center">不滿</span>
+                <div class="flex flex-1 md:flex-none gap-1 sm:gap-2 md:gap-3" id="radio-container"></div>
+                <span class="text-[10px] md:text-[11px] text-british-green/40 font-bold uppercase w-8 text-center">滿意</span>
             </div>
         </div>
     </template>
@@ -296,19 +296,19 @@
                 { id: 'q1', text: '內容理解度：法律觀念是否白話易懂，不再是生硬法條？' },
                 { id: 'q2', text: '實踐實用性：課程內容是否具有實用性，能直接應用於職場？' },
                 { id: 'q3', text: '專業競爭力：是否有助於提升您的工作能力或處理爭議的底氣？' },
-                { id: 'q4', text: '課程整體品質：您對本次課程（台北/台中場）的整體評價。' }
+                { id: 'q4', text: '課程整體品質：您對本次課程的整體評價。' }
             ],
             'lecturer-ratings': [
                 { id: 'q5', text: '專業信賴感：講師 Eva 的專業知識與實務經驗是否讓您滿意？' },
                 { id: 'q6', text: '教學感染力：講師的授課技巧、表達能力與節奏掌控。' },
                 { id: 'q7', text: '教學熱忱度：講師的教學態度與課堂互動感。' },
-                { id: 'q8', text: '實務解惑感：講師在課中針對學員提問（含課前回饋）的解答程度。' }
+                { id: 'q8', text: '實務解惑感：講師針對學員提問的解答程度。' }
             ],
             'logistics-ratings': [
-                { id: 'q9', text: '講義精準度：講義內容切合主題，深淺適中且架構完整、有連貫性。' },
-                { id: 'q10', text: '閱讀流暢性：內容編排是否流暢、容易閱讀（方便日後複習）？' },
-                { id: 'q11', text: '教學資源搭配：輔助資源（如影片、道具、教具）與設備的運用。' },
-                { id: 'q12', text: '行政服務：教室清潔度、時數安排、工作人員的及時反饋與態度。' }
+                { id: 'q9', text: '講義精準度：講義內容切合主題，深淺適中且架構完整。' },
+                { id: 'q10', text: '閱讀流暢性：內容編排是否流暢、容易閱讀？' },
+                { id: 'q11', text: '教學資源搭配：輔助資源與設備的運用。' },
+                { id: 'q12', text: '行政服務：時數安排、工作人員的態度。' }
             ]
         };
 
@@ -337,14 +337,14 @@
                     for (let i = 1; i <= 5; i++) {
                         const wrapper = document.createElement('div');
                         const inputId = `${item.id}-${i}`;
+                        wrapper.className = "flex-1 md:flex-initial";
                         wrapper.innerHTML = `
                             <input type="radio" id="${inputId}" name="${item.id}" value="${i}" class="hidden" required>
-                            <label for="${inputId}" class="rating-label w-12 h-10 md:w-16 md:h-12 flex items-center justify-center font-bold text-british-green cursor-pointer text-sm bg-white/20 hover:bg-white/50">
+                            <label for="${inputId}" class="rating-label w-full font-bold text-british-green text-lg md:text-xl border border-british-green/10">
                                 ${i}
                             </label>
                         `;
-                        radioContainer.appendChild(wrapper.firstElementChild);
-                        radioContainer.appendChild(wrapper.lastElementChild);
+                        radioContainer.appendChild(wrapper);
                     }
                     container.appendChild(clone);
                 });
