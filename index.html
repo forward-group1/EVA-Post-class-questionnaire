@@ -45,7 +45,6 @@
             border: 1px solid #C5A059;
             font-family: 'EB Garamond', serif;
         }
-        /* 按鈕樣式：手機版寬大，電腦版固定 */
         .rating-label {
             border: 1px solid rgba(15, 47, 36, 0.15);
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -55,18 +54,11 @@
             cursor: pointer;
             background-color: rgba(255, 255, 255, 0.4);
         }
-        /* 電腦版按鈕大小設定 */
         @media (min-width: 768px) {
-            .rating-label {
-                width: 3.5rem !important;
-                height: 3rem !important;
-            }
+            .rating-label { width: 3.5rem !important; height: 3rem !important; }
         }
-        /* 手機版按鈕高度設定 */
         @media (max-width: 767px) {
-            .rating-label {
-                height: 3.5rem !important;
-            }
+            .rating-label { height: 3.5rem !important; }
         }
         input:checked + .rating-label {
             background-color: #0F2F24 !important;
@@ -102,7 +94,7 @@
         <p class="font-serif italic text-lg">提交中，請稍候...</p>
     </div>
 
-    <div class="mb-8 md:absolute md:top-6 md:left-6 lg:top-10 lg:left-10 z-10 flex justify-center md:block text-center">
+    <div class="mb-8 md:absolute md:top-6 md:left-6 lg:top-10 lg:left-10 z-10 flex justify-center md:block">
         <img src="https://drive.google.com/thumbnail?id=1xrhrHTWGHnMbwGZFFAQPFEWaKeDDdBlQ&sz=w400" alt="Logo" class="h-14 md:h-20 w-auto opacity-90 md:opacity-80">
     </div>
 
@@ -134,17 +126,17 @@
                     </div>
                     <div class="md:col-span-2 space-y-4 pt-4">
                         <label class="block text-lg font-bold text-british-green uppercase tracking-widest mb-2 border-l-4 border-british-gold pl-3">為什麼當初報名這堂課？ (可多選)</label>
-                        <div class="grid grid-cols-1 gap-3">
+                        <div class="grid grid-cols-1 gap-3 px-1">
                             <label class="flex items-start space-x-3 cursor-pointer group">
-                                <input type="checkbox" name="motivation" value="廣告標題吸引我 (如：吵架的藝術)" class="w-5 h-5 mt-1 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
+                                <input type="checkbox" name="motivation" value="廣告標題吸引我 (如：吵架的藝術)" class="w-6 h-6 mt-1 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
                                 <span class="text-base md:text-lg text-british-green/80 group-hover:text-british-green transition font-medium">廣告標題吸引我 (如：吵架的藝術)</span>
                             </label>
                             <label class="flex items-start space-x-3 cursor-pointer group">
-                                <input type="checkbox" name="motivation" value="認同 Eva 老師的專業背景/粉專內容" class="w-5 h-5 mt-1 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
+                                <input type="checkbox" name="motivation" value="認同 Eva 老師的專業背景/粉專內容" class="w-6 h-6 mt-1 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
                                 <span class="text-base md:text-lg text-british-green/80 group-hover:text-british-green transition font-medium">認同 Eva 老師的專業背景 / 粉專內容</span>
                             </label>
                             <label class="flex items-start space-x-3 cursor-pointer group">
-                                <input type="checkbox" name="motivation" value="目前正陷入職場衝突，急需法律自保" class="w-5 h-5 mt-1 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
+                                <input type="checkbox" name="motivation" value="目前正陷入職場衝突，急需法律自保" class="w-6 h-6 mt-1 border-2 border-british-gold/50 text-british-gold rounded focus:ring-0">
                                 <span class="text-base md:text-lg text-british-green/80 group-hover:text-british-green transition font-medium">目前正陷入職場衝突，急需法律自保</span>
                             </label>
                             <label class="flex items-start space-x-3 cursor-pointer group">
@@ -185,9 +177,9 @@
             </section>
 
             <section class="paper-card p-6 md:p-12 rounded-sm relative border-b-8 border-british-gold text-left">
-                <div class="absolute -top-5 left-6 md:left-10 section-number w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg">V</div>
-                <div class="mb-6 border-b border-british-gold/20 pb-4">
-                    <h3 class="text-3xl font-bold text-british-green mb-1">實務收穫</h3>
+                <div class="absolute -top-5 left-10 section-number w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg">V</div>
+                <div class="mb-6 md:mb-8 border-b border-british-gold/20 pb-4">
+                    <h3 class="text-2xl md:text-3xl font-bold text-british-green mb-1">實務收穫</h3>
                 </div>
                 
                 <div class="space-y-8">
@@ -211,11 +203,11 @@
                         <div class="space-y-4">
                             <label class="flex items-center space-x-4 cursor-pointer group text-left">
                                 <input type="radio" name="authorization" value="同意！支持優質好課 (將授權去識別化後引用評價)" class="w-6 h-6 border-2 border-british-gold text-british-green focus:ring-0" required>
-                                <span class="text-lg text-british-green font-serif italic font-bold">同意！授權去識別化後引用評價</span>
+                                <span class="text-base md:text-lg text-british-green font-serif italic font-bold">同意！授權去識別化後引用評價</span>
                             </label>
                             <label class="flex items-center space-x-4 cursor-pointer group text-left">
                                 <input type="radio" name="authorization" value="僅限內部參考" class="w-6 h-6 border-2 border-british-gold text-british-green focus:ring-0">
-                                <span class="text-lg text-british-green/60 font-serif italic">僅限內部參考</span>
+                                <span class="text-base md:text-lg text-british-green/60 font-serif italic">僅限內部參考</span>
                             </label>
                         </div>
                     </div>
@@ -231,17 +223,12 @@
 
         <footer class="bg-british-green text-white py-12 border-t-4 border-british-gold text-center -mx-4">
             <div class="container mx-auto px-6 text-center flex flex-col items-center">
-                <div class="mb-2">
-                    <img src="https://drive.google.com/thumbnail?id=1xrhrHTWGHnMbwGZFFAQPFEWaKeDDdBlQ&sz=w400" alt="Logo" class="h-12 w-auto object-contain">
-                </div>
-                <p class="text-gray-400 text-xs sm:text-sm mb-8 max-w-lg leading-relaxed tracking-wide font-serif italic px-2">
-                    我思故我在！人不會思考，跟死魚有什麼兩樣？<br>
-                    <span class="not-italic opacity-60 mt-2 block tracking-widest uppercase text-[10px]">Copyright © 2026 職場法律實戰班. All rights reserved.</span>
-                </p>
-                <div class="flex justify-center gap-6 text-center">
-                    <a href="https://www.facebook.com/profile.php?id=61572494396270" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full border border-british-gold text-british-gold text-xl group transition hover:bg-british-gold hover:text-british-green"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/legal._.thinking/" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full border border-british-gold text-british-gold text-xl group transition hover:bg-british-gold hover:text-british-green"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://lin.ee/0ekc9BGY" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full border border-british-gold text-british-gold text-xl group transition hover:bg-british-gold hover:text-british-green"><i class="fa-brands fa-line"></i></a>
+                <div class="mb-2"><img src="https://drive.google.com/thumbnail?id=1xrhrHTWGHnMbwGZFFAQPFEWaKeDDdBlQ&sz=w400" alt="Logo" class="h-12 w-auto object-contain"></div>
+                <p class="text-gray-400 text-xs sm:text-sm mb-8 max-w-lg leading-relaxed tracking-wide font-serif italic px-2">我思故我在！人不會思考，跟死魚有什麼兩樣？<br><span class="not-italic opacity-60 mt-2 block tracking-widest uppercase text-[10px]">Copyright © 2026 職場法律實戰班. All rights reserved.</span></p>
+                <div class="flex justify-center gap-6">
+                    <a href="https://www.facebook.com/profile.php?id=61572494396270" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full border border-british-gold text-british-gold text-xl transition hover:bg-british-gold hover:text-british-green"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/legal._.thinking/" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full border border-british-gold text-british-gold text-xl transition hover:bg-british-gold hover:text-british-green"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://lin.ee/0ekc9BGY" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full border border-british-gold text-british-gold text-xl transition hover:bg-british-gold hover:text-british-green"><i class="fa-brands fa-line"></i></a>
                 </div>
             </div>
         </footer>
@@ -249,8 +236,10 @@
         <div id="successMessage" class="hidden max-w-2xl mx-auto py-12 px-6 md:py-16 md:px-12 paper-card rounded-none border-4 border-double border-british-gold m-2 mb-24 text-center">
             <h2 class="text-3xl md:text-4xl font-black mb-6 font-serif text-british-green italic">感謝您的填寫</h2>
             <div class="w-16 md:w-24 h-px bg-british-gold mx-auto mb-10"></div>
+            
             <div class="space-y-6 font-serif text-base md:text-lg leading-relaxed text-british-green/90">
                 <p class="text-center font-bold">想邀請您加入<br>👉【企業危機百科】官方 Line</p>
+                
                 <div class="p-6 bg-british-green/5 border border-british-gold/30 rounded-sm">
                     <p class="mb-4 text-center text-british-green">LINE：<span class="font-bold">@hotpoint</span></p>
                     <div class="text-center">
@@ -259,11 +248,15 @@
                             <span class="font-bold font-sans">立即加入官方 LINE</span>
                         </a>
                     </div>
-                    <p class="mt-6 text-base italic text-center">加入後，請傳送關鍵字<span class="bg-british-gold/20 px-2 font-bold not-italic">「律色思維」</span></p>
-                    <p class="text-xs md:text-sm text-british-green/60 mt-2 text-center px-4">（若你已加入過，也請再傳送一次關鍵字），小編就會知道你是從課程來的小夥伴 💛</p>
+                    <p class="mt-6 text-base text-center">
+                        加入後傳送關鍵字<span class="bg-british-gold/20 px-2 font-bold italic mx-1">「律色思維」</span><br>
+                        <span class="text-sm text-british-green/60 italic">（若已加入，請再傳送一次關鍵字）</span>
+                    </p>
+                    <p class="text-sm text-british-green/80 mt-2 text-center px-4">小編就會知道您是從課程來的夥伴 💛</p>
                 </div>
+
                 <div class="pt-4 text-left px-2 max-w-xs mx-auto md:max-w-none">
-                    <p class="font-bold mb-4 border-b border-british-gold/20 pb-2">之後你會收到：</p>
+                    <p class="font-bold mb-4 border-b border-british-gold/20 pb-2">之後您會收到：</p>
                     <ul class="space-y-2 list-none text-sm md:text-base">
                         <li class="flex items-start"><span class="text-british-gold mr-2">✔</span> Eva 老師最新開課消息</li>
                         <li class="flex items-start"><span class="text-british-gold mr-2">✔</span> 學員專屬優惠</li>
@@ -271,10 +264,16 @@
                         <li class="flex items-start"><span class="text-british-gold mr-2">✔</span> 勞動更新資訊</li>
                     </ul>
                 </div>
-                <p class="pt-8 text-center font-bold text-british-gold text-xl md:text-2xl tracking-wide italic">歡迎加入，Line 上見 👋</p>
+
+                <p class="pt-8 text-center font-bold text-british-gold text-xl md:text-2xl tracking-wide italic">
+                    歡迎加入，Line 上見 👋
+                </p>
             </div>
+
             <div class="mt-12 text-center">
-                <button onclick="location.reload()" class="text-british-green/40 hover:text-british-gold transition underline text-xs uppercase tracking-widest">返回問卷首頁</button>
+                <button onclick="location.reload()" class="text-british-green/40 hover:text-british-gold transition underline text-xs uppercase tracking-widest">
+                    返回問卷首頁
+                </button>
             </div>
         </div>
     </div>
@@ -313,15 +312,11 @@
         };
 
         const GOOGLE_FORM_MAPPING = {
-            'entry_name': 'entry.690434033',
-            'entry_job': 'entry.1932001636',
-            'motivation': 'entry.850560891',
+            'entry_name': 'entry.690434033', 'entry_job': 'entry.1932001636', 'motivation': 'entry.850560891',
             'q1': 'entry.533254831', 'q2': 'entry.1132970983', 'q3': 'entry.424812681', 'q4': 'entry.49128692',
-            'q5': 'entry.380936238', 'q6': 'entry.43597951',   'q7': 'entry.175716016', 'q8': 'entry.403325883',
-            'q9': 'entry.325817990', 'q10': 'entry.1605997982','q11': 'entry.2053223737','q12': 'entry.595287270',
-            'entry_gains': 'entry.1777583025',
-            'entry_feedback': 'entry.399612364',
-            'entry_future': 'entry.930106411',
+            'q5': 'entry.380936238', 'q6': 'entry.43597951', 'q7': 'entry.175716016', 'q8': 'entry.403325883',
+            'q9': 'entry.325817990', 'q10': 'entry.1605997982', 'q11': 'entry.2053223737', 'q12': 'entry.595287270',
+            'entry_gains': 'entry.1777583025', 'entry_feedback': 'entry.399612364', 'entry_future': 'entry.930106411',
             'authorization': 'entry.169881295'
         };
 
@@ -338,12 +333,7 @@
                         const wrapper = document.createElement('div');
                         const inputId = `${item.id}-${i}`;
                         wrapper.className = "flex-1 md:flex-initial";
-                        wrapper.innerHTML = `
-                            <input type="radio" id="${inputId}" name="${item.id}" value="${i}" class="hidden" required>
-                            <label for="${inputId}" class="rating-label w-full font-bold text-british-green text-lg md:text-xl border border-british-green/10">
-                                ${i}
-                            </label>
-                        `;
+                        wrapper.innerHTML = `<input type="radio" id="${inputId}" name="${item.id}" value="${i}" class="hidden" required><label for="${inputId}" class="rating-label w-full font-bold text-british-green text-lg md:text-xl border border-british-green/10">${i}</label>`;
                         radioContainer.appendChild(wrapper);
                     }
                     container.appendChild(clone);
@@ -357,39 +347,18 @@
             const formData = new FormData(form);
             const loading = document.getElementById('loadingOverlay');
             loading.style.display = 'flex';
-
             const googleFormData = new URLSearchParams();
-            ['entry_name', 'entry_job', 'entry_gains', 'entry_feedback', 'entry_future', 'authorization'].forEach(field => {
-                googleFormData.append(GOOGLE_FORM_MAPPING[field], formData.get(field));
-            });
+            ['entry_name', 'entry_job', 'entry_gains', 'entry_feedback', 'entry_future', 'authorization'].forEach(field => googleFormData.append(GOOGLE_FORM_MAPPING[field], formData.get(field)));
             const motivations = formData.getAll('motivation');
             motivations.forEach(val => googleFormData.append(GOOGLE_FORM_MAPPING['motivation'], val));
-            Object.keys(ratingConfig).forEach(cat => {
-                ratingConfig[cat].forEach(q => {
-                    googleFormData.append(GOOGLE_FORM_MAPPING[q.id], formData.get(q.id));
-                });
-            });
-
+            Object.keys(ratingConfig).forEach(cat => ratingConfig[cat].forEach(q => googleFormData.append(GOOGLE_FORM_MAPPING[q.id], formData.get(q.id))));
             const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfTNVQFCyY2Mtw_3KpeCP0kMRYZ9vK4xp607VbzweRvcgdLRA/formResponse';
             try {
-                await fetch(FORM_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: googleFormData.toString()
-                });
+                await fetch(FORM_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: googleFormData.toString() });
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 form.style.opacity = '0';
-                setTimeout(() => {
-                    form.classList.add('hidden');
-                    document.querySelector('footer').classList.add('hidden');
-                    document.getElementById('successMessage').classList.remove('hidden');
-                    loading.style.display = 'none';
-                }, 400);
-            } catch (error) {
-                loading.style.display = 'none';
-                alert('提交失敗，請檢查網路連線或稍後再試。');
-            }
+                setTimeout(() => { form.classList.add('hidden'); document.querySelector('footer').classList.add('hidden'); document.getElementById('successMessage').classList.remove('hidden'); loading.style.display = 'none'; }, 400);
+            } catch (error) { loading.style.display = 'none'; alert('提交失敗，請檢查網路連線。'); }
         });
 
         window.onload = initRatings;
